@@ -10,6 +10,7 @@ import lombok.ToString;
 public class CustomerDTO {
 
     private String email;
+    private String username;
     private String password;
     private String phone;
     private String auth;
