@@ -32,16 +32,16 @@ public class Customer implements UserDetails{
             generator="CUSTOMER_SEQ_GEN" //식별자 생성기를 설정해놓은  USER_SEQ_GEN으로 설정
     )
     private Long id;
-    private String username;
+    private String name;
     private String password;
     private String email;
     private String phone;
     private String auth;
 
     @Builder
-    public Customer(Long id, String username, String password, String email, String phone, String auth) {
+    public Customer(Long id, String name, String password, String email, String phone, String auth) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.password = password;
         this.email = email;
         this.phone = phone;

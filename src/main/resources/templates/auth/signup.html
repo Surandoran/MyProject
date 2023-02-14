@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        function fn_submit() {
+            var email = $('#inputState').val();
+            var id = $('#inputId').val();
 
-</body>
+            $('#result').attr("value",id + "@" + email);
+        }
+    </script>
+</th:block>
+
+<div layout:fragment="content">
+
+    <form class="row g-3" method="post" action="/signup" th:object="${Customer}">
+
+        <div class="col-md-6">
+            <label for="inputId" class="form-label">Email</label>
+            <input type="text" class="form-control" id="inputId">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select">
+                <option selected>naver.com</option>
+                <option selected>daum.net</option>
+                <option selected>google.com</option>
+                <option selected>Choose...</option>
+                <option>...</option>
+            </select>
+        </div>
+        <input id="result" type="text" hidden="hidden" name="email">
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" id="inputAddress" placeholder="앞 010, - 을 제외한 8자리 ex) 12349990">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" onclick="fn_submit()">Sign in</button>
+        </div>
+    </form>
+
+</div>
 </html>

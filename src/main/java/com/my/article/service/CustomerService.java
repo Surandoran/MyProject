@@ -34,10 +34,24 @@ public class CustomerService implements UserDetailsService {
                 .id(customer.getId())
                 .password(customer.getPassword())
                 .phone(customer.getPhone())
-                .username(customer.getUsername())
+                .name(customer.getName())
                 .email(customer.getEmail())
                 .auth(customer.getAuth())
                 .build();
+    }
+
+    private void validateDuplicateMember(Customer customer){
+        customerRepository.findByEmail(customer.getEmail())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 아이디입니다.");
+                });
+    }
+
+    //회원가입
+    public String save(Customer customer){
+        validateDuplicateMember(customer);//중복회원검증
+        customerRepository.save(customer);
+        return customer.getEmail();
     }
 
 }
