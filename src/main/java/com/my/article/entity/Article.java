@@ -30,6 +30,6 @@ public class Article {
     private String email;
     private String content;
     private String title;
-    private String CreationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    private String articlecreate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 }
