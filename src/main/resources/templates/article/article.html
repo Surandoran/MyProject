@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .main {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        #comment {
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+        }
+        .page_nav {
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+        }
+        ul {
+            text-align: center;
+        }
+    </style>
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+</th:block>
+
+<div layout:fragment="content" class="main">
+    <h3>자유게시판</h3>
+    <br>
+    <div id="article_body">
+        <h1 th:text="${article.getTitle()}"></h1>
+        <div class="content">
+            <span th:text="${article.getArticleid()}"></span>
+            <span th:text="${article.getArticlecreate()}"></span>
+            <span th:text="${article.getEmail()}"></span>
+            <span th:text="${article.getContent()}"></span>
+        </div>
+    </div>
+    <div id="comment">
+        <table id="articles" class="table table-hover">
+            <thead>
+
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">작성자</th>
+                <th scope="col">댓글내용</th>
+                <th scope="col">작성시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="items" th:each="item : ${comments}">
+                <td th:text="${ item.commentid}"></td>
+                <a><td id="title" th:text="${ item.email}"></td></a>
+                <td th:text="${ item.content}"></td>
+                <td th:text="${ item.articlecreate}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="comment_new">
+        <form action="/comment/new" method="post">
+            <div class="form-group">
+                <label for="content">내용</label>
+                <input type="text" name="content" class="form-control" id="content" placeholder="내용을 입력해주세요">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <!-- 페이징 -->
+    <div th:if="${!comments.isEmpty()}">
+        <!-- 전역 변수 선언 -->
+        <nav class="page_nav"
+             th:with="
+                pageNumber = ${comments.pageable.pageNumber},
+                pageSize = ${comments.pageable.pageSize},
+                totalPages = ${comments.totalPages},
+                startPage = ${T(java.lang.Math).floor(pageNumber / pageSize) * pageSize + 1},
+                tempEndPage = ${startPage + pageSize - 1},
+                endPage = (${tempEndPage < totalPages ? tempEndPage : totalPages})"
+             aria-label="Page navigation"
+        >
+            <ul class="pagination pagination-sm">
+                <!-- 처음으로 이동 -->
+                <li th:classappend="${pageNumber < pageSize} ? 'disabled'" class="page-item">
+                    <a class="page-link" th:href="@{/articles/{articleid}(page=0)}">
+                        <span>&laquo;</span>
+                        <span class="sr-only">First</span>
+                    </a>
+                </li>
+
+                <!-- 이전으로 이동 -->
+                <li th:classappend="${comments.first} ? 'disabled'" class="page-item">
+                    <a class="page-link" th:href="${comments.first} ? '#' : @{/articles/{articleid}(page=${pageNumber - 1})}" aria-label="Previous">
+                        <span aria-hidden="true">&lt;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+                <!-- 특정 페이지로 이동 -->
+                <li th:class="page_btn" th:each="page: ${#numbers.sequence(startPage, endPage)}" th:classappend="${page == pageNumber + 1} ? 'active'" class="page-item">
+                    <a th:text="${page}" class="page-link" th:href="@{/articles/{articleid}(page=${page - 1})}"></a>
+                </li>
+
+                <!-- 다음으로 이동 -->
+                <li th:classappend="${comments.last} ? 'disabled'" class="page-item">
+                    <a class="page-link" th:href="${comments.last} ? '#' : @{/articles/{articleid}(page=${pageNumber + 1})}" aria-label="Next">
+                        <span aria-hidden="true">&gt;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+
+                <!-- 마지막으로 이동 -->
+                <li th:classappend=" ${T(java.lang.Math).floor(totalPages / pageSize) * pageSize - 1 <= startPage} ? 'disabled'" class="page-item">
+                    <a class="page-link" th:href="@{/articles/{articleid}(page=${totalPages - 1})}">
+                        <span>&raquo;</span>
+                        <span class="sr-only">Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div> <!-- /container -->
+</div>
+</html>

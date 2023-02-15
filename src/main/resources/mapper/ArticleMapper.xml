@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.article.mapper.ArticleMapper">
+
+    <select id="ARTICLE_LISTS" resultType="com.my.article.entity.Article" fetchSize="5000">
+
+        SELECT * FROM ARTICLE
+
+    </select>
+
+    <select id="ARTICLE_INFO" resultType="com.my.article.entity.Article" fetchSize="5000">
+
+        select * from article where articleid = #{articleid}
+
+    </select>
+
+    <insert id="ARTICLE_NEW">
+
+            INSERT INTO ARTICLE(articleid, title, content, email, articlecreate)
+            VALUES (ARTICLE_SEQ.NEXTVAL, #{title}, #{content}, #{email}, #{articlecreate})
+
+    </insert>
+
+    <delete id="ARTICLE_DELETE">
+
+        delete ARTICLE WHERE articleid = #{articleid}
+
+    </delete>
+
+</mapper>

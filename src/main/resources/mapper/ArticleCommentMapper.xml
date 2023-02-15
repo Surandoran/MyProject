@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.article.mapper.ArticleCommentMapper">
+
+    <select id="ARTICLE_COMMENTS_ALL" resultType="com.my.article.entity.ArticleComment" fetchSize="5000">
+
+        SELECT * FROM ARTICLE_COMMENT
+
+    </select>
+
+    <select id="ARTICLE_COMMENTS" resultType="com.my.article.entity.ArticleComment" fetchSize="5000">
+
+        SELECT * FROM ARTICLE_COMMENT WHERE articleid = #{articleid}
+
+    </select>
+
+    <insert id="ARTICLE_COMMENT_NEW">
+
+        INSERT INTO ARTICLE_COMMENT(commentid, articleid, content, articlecreate, email)
+        VALUES (ARTICLE_COMMENT_SEQ.NEXTVAL, #{articleid}, #{content}, #{articlecreate}, #{email})
+
+    </insert>
+
+    <delete id="ARTICLE_COMMENT_DELETE">
+
+        delete ARTICLE_COMMENT WHERE articleid = #{articleid}
+
+    </delete>
+
+</mapper>
