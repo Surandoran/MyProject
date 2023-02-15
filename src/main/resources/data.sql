@@ -10,6 +10,18 @@ VALUES (ARTICLE_SEQ.NEXTVAL, 'content@NAVER.COM', '내용입니다.', '제목입
 INSERT INTO ARTICLE(articleid, email, content, title, articlecreate)
 VALUES (ARTICLE_SEQ.NEXTVAL, 'PO@NAVER.COM', '내용입니다.', '제목입니다.', '2023-02-15');
 
+INSERT INTO ARTICLE_COMMENT(commentid, articleid, content, email, articlecreate)
+VALUES (ARTICLE_COMMENT_SEQ.NEXTVAL, 1, '내용입니다.', 'LOVE@NAVER.COM', '2023-02-12');
+
+INSERT INTO ARTICLE_COMMENT(commentid, articleid, content, email, articlecreate)
+VALUES (ARTICLE_COMMENT_SEQ.NEXTVAL, 2, '내용입니다.', 'title@NAVER.COM', '2023-02-12');
+
+INSERT INTO ARTICLE_COMMENT(commentid, articleid, content, email, articlecreate)
+VALUES (ARTICLE_COMMENT_SEQ.NEXTVAL, 3, '내용입니다.', 'content@NAVER.COM', '2023-02-12');
+
+INSERT INTO ARTICLE_COMMENT(commentid, articleid, content, email, articlecreate)
+VALUES (ARTICLE_COMMENT_SEQ.NEXTVAL, 4, '내용입니다.', 'PO@NAVER.COM', '2023-02-12');
+
 INSERT INTO CUSTOMER(id, name, password, email, phone, auth)
 VALUES(CUSTOMER_SEQ.NEXTVAL, '홍길동', '1234', 'LOVE@NAVER.COM', '010-0000-0000', 'USER');
 
