@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+</th:block>
+
+<div layout:fragment="content">
+
+  <main class="container" id="mains">
+    <div class="py-5 text-center">
+      <h2 th:text="|에러코드 : ${status}|"></h2>
+      <p>해당 페이지는 오류 페이지 입니다.</p>
+    </div>
+
+    <ul>
+      <li>해결 방법</li>
+      <ul> <!-- 타임리프의 문자열 생성기능. 자바스크립트의 `string ${value}s`와 비슷 -->
+        <li th:text="|timestamp: ${timestamp}|"></li>
+        <!--경로-->
+        <li th:text="|path: ${path}|"></li>
+        <!--에러 코드-->
+        <li th:text="|status: ${status}|"></li>
+        <!--에러 내용-->
+        <li th:text="|message: ${message}|"></li>
+        <!--에러 종류-->
+        <li th:text="|error: ${error}|"></li>
+        <!--예외내용-->
+        <li th:text="|exception: ${exception}|"></li>
+        <!--에러 원인-->
+        <li th:text="|errors: ${errors}|"></li>
+        <!--원인 추적-->
+        <li th:text="|trace: ${trace}|"></li>
+      </ul>
+      <ul>
+        <li>화면을 새로고침 해주세요.</li>
+        <li>로그인 후 다시 접속해 주세요.</li>
+      </ul>
+      </li>
+    </ul>
+  </main>
+
+</div>
+</html>
