@@ -6,6 +6,15 @@
 <head th:replace="fragments/config :: configFragment"></head>
 
 <style>
+    main {
+    }
+    .my_container {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        width: 80%;
+        left: 10%;
+    }
 </style>
 
 <body>
@@ -13,7 +22,7 @@
 <header th:replace="fragments/header :: headerFragment"></header>
 <!-- header 끝 -->
 <!-- content 시작 -->
-<div layout:fragment="content"></div>
+<div layout:fragment="content" class="my_container"></div>
 <!-- content 끝 -->
 <!-- footer 시작 -->
 <footer th:replace="fragments/footer :: footerFragment"></footer>
