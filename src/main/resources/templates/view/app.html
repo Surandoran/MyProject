@@ -7,6 +7,24 @@
 >
 <!-- index.html 고유 CSS 추가 -->
 <th:block layout:fragment="css">
+  <style>
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    #article {
+      padding-left: 10%;
+    }
+
+    #font {
+      font-size: 1.5rem;
+    }
+
+    #Last_Ul li {
+      font-size: 1.3rem;
+    }
+  </style>
 </th:block>
 <!-- index.html 고유 스크립트 추가 -->
 <th:block layout:fragment="script">
@@ -17,7 +35,138 @@
 
   <main class="container">
 
-  </main>
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Page Info</h1>
+        <p class="lead my-3">Android Studio</p>
+        <p class="lead my-3">Views</p>
+        <p class="lead mb-0"><a class="text-white fw-bold" href="#">자세히 알아보기</a></p>
+      </div>
+    </div>
 
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Main</strong>
+            <h3 class="mb-0">Layout</h3>
+            <div class="mb-1 text-muted">View 기본틀</div>
+            <p class="card-text mb-auto">
+              하단의 Toolbar와 상단의 앱바를 고정 <br>
+              상단에선 로그아웃과 홈버튼, <br>
+              하단 ToolBar에선 홈버튼, 고객센터, 내 정보를 확인할 수 있는 탭이 있음.
+            </p>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="/img/App/layout.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Login</strong>
+            <h3 class="mb-0">Login Page</h3>
+            <div class="mb-1 text-muted">Jpa,Security로 login 구현</Customer></div>
+            <p class="card-text mb-auto">로그인 성공시 Server에서 JWT 토큰을 발행.</p>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="/img/App/main.png">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Main</strong>
+            <h3 class="mb-0">List Page</h3>
+            <p class="card-text mb-auto">
+              토큰 정보를 바탕으로 해당 사장님의 매장을 확인 이후 결제 내역을 확인 할 수 있다. 그리고 날짜 별로 List를 출력하게 함.
+            </p>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="/img/App/index.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Open</strong>
+            <h3 class="mb-0">Open Page</h3>
+            <div class="mb-1 text-muted">Open 버튼 클릭 시 DB에 있는 회원의 번호와 대조 이후 맞다면 Open이후 정보 최신화</Customer></div>
+            <p class="card-text mb-auto"></p>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="/img/App/door_open1.png">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Main</strong>
+            <h3 class="mb-0">index Page</h3>
+            <div class="mb-1 text-muted">권한 확인</div>
+            <p class="card-text mb-auto">
+              회원의 정보를 바탕으로 로그인 하였을 시 버튼 disable
+            </p>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="/img/App/List.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Login</strong>
+            <h3 class="mb-0">Login Page</h3>
+            <div class="mb-1 text-muted">Jpa,Security로 login 구현</Customer></div>
+            <p class="card-text mb-auto">로그인 성공시 Session에 Custom user 정보객체를 저장</p>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="/img/App/MyInfo.png">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+
+        <article class="blog-post" id="article">
+          <p class="blog-post-meta" id="font">프로젝트 시작 : 2023-01</p>
+          <h2 class="blog-post-title mb-1">SevenKioskShopApp Project</h2>
+
+          <p id="font">기술 스택들</p>
+          <hr>
+          <ul id="Last_Ul">
+            <li>JWT</li>
+            <li>Spring Security</li>
+            <li>Mybatis</li>
+            <li>google material</li>
+            <li>OkHttp3</li>
+            <li>JBCrypt</li>
+            <li>Retrofit</li>
+            <li>ViewPager2</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </main>
 </div>
 </html>

@@ -1,0 +1,9 @@
+@font-face {
+    src: url("../font/Cafe24Danjunghae.ttf");
+    font-family: "Jua";
+}
+
+body {
+    font-family: "Jua";
+    font-size: 1.5rem;
+}
